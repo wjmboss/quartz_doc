@@ -18,7 +18,7 @@
 - 在pubspec.yaml中加入: 
 ```yaml
 flutter_quartz:
-    path: plugins/flutter_quartz
+    path: plugins/quartz_doc
 ```
 
 - 执行 Packages Get
@@ -41,7 +41,7 @@ QuartzPage(
 
 - 使用以下语句导入本库:
 ```dart
-import 'quartz_doc.dart';
+import 'package:quartz_doc/quartz_doc.dart';
 ```
 
 - 使用QuartzDoc进行开发吧！
