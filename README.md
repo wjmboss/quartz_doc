@@ -17,7 +17,7 @@
 
 - 在pubspec.yaml中加入: 
 ```yaml
-flutter_quartz:
+quartz_doc:
     path: plugins/quartz_doc
 ```
 
