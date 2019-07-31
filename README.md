@@ -46,28 +46,6 @@ import 'package:quartz_doc/quartz_doc.dart';
 
 - 使用QuartzDoc进行开发吧！
 
-## 作者
-![image](https://github.com/ResetPower/QuartzDoc/blob/master/images/ResetPower.png)
-
-ResetPower
-
-您也可以在贡献者名单中查看所有参与该项目的开发者
-
-## 声明
-该项目使用了:
-
-Dart标准库
-
-Flutter SDK
-
-pdf
-
-flutter_plugin_pdf_renderer
-
-file_picker
-
-flutter_markdown
-
 ## 结尾
 
 本篇README如有任何错误，请立刻指出，谢谢！
