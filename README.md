@@ -51,13 +51,13 @@ import 'package:quartz_doc/quartz_doc.dart';
 ## 关于
 
 主要开发者:
-![image](https://github.com/warpinstudio/quartz_doc/tree/master/images/ResetPower.png)
+![image](github.com/warpinstudio/quartz_doc/tree/master/images/ResetPower.png)
 
 感谢 Warpin Studio的其它人员对我的大力支持与鼓励
 感谢 Flutter 茶馆中的小伙伴们对我的大力支持与鼓励
 
 ## 关于捐赠
-![image](https://github.com/warpinstudio/quartz_doc/tree/master/images/WeChatPay.jpeg)
+![image](github.com/warpinstudio/quartz_doc/tree/master/images/WeChatPay.jpeg)
 
 ## 结尾
 
