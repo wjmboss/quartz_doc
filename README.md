@@ -4,8 +4,10 @@
 
 ## 注意
 
-该项目尚未开发完毕, 请勿下载
+该项目尚未开发完毕，仅支持Markdown文档的编辑且不稳定。
 ## 上手指南
+
+* 注: 如果您想要省去一些多余的麻烦，您可以直接在Android/iOS虚拟机里运行本项目中的example模块
 
 以下指南将帮助你在本地项目上引用该项目，进行开发和测试。
 
@@ -45,6 +47,17 @@ import 'package:quartz_doc/quartz_doc.dart';
 ```
 
 - 使用QuartzDoc进行开发吧！
+
+## 关于
+
+主要开发者:
+![ResetPower](https://github.com/warpinstudio/quartz_doc/tree/master/images/ResetPower.png)
+
+感谢 Warpin Studio的其它人员对我的大力支持与鼓励
+感谢 Flutter 茶馆中的小伙伴们对我的大力支持与鼓励
+
+## 关于捐赠
+![WeChatPay.jpeg](https://github.com/warpinstudio/quartz_doc/tree/master/images/WeChatPay.jpeg)
 
 ## 结尾
 

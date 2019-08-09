@@ -74,10 +74,10 @@ class MarkdownEditPageState extends State<MarkdownEditPage> {
                       onTap: () {
                         textSheet(context, "请输入引用块内容", "引用块内容", Icons.format_quote, (data) {
                           setState(() {
-                            append(MarkdownComponent(type: MarkdownComponentType.QUOTE, arguments: [data],));
+                            append(MarkdownComponent(type: MarkdownComponentType.QUOTE, arguments: [data.replaceAll("\n\n", "\n")],));
                             save();
                           });
-                        });
+                        }, "", true);
                       },
                     ),
                     GestureDetector(

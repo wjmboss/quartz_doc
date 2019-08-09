@@ -31,7 +31,7 @@ void tipsSheet(BuildContext context, String tip, [VoidCallback onOkClicked]) {
   );
 }
 
-void textSheet(BuildContext context, String tip, String label, IconData iconData, Function(String data) callback, [String src = ""]) {
+void textSheet(BuildContext context, String tip, String label, IconData iconData, Function(String data) callback, [String src = "", bool multiColumn]) {
   final ctrlr = TextEditingController();
   ctrlr.text = src;
   showModalBottomSheet(
@@ -46,6 +46,7 @@ void textSheet(BuildContext context, String tip, String label, IconData iconData
             prefixIcon: Icon(iconData),
             labelText: label,
           ),
+          maxLines: multiColumn==null?null:2,
         ),
         ButtonBar(
           alignment: MainAxisAlignment.end,

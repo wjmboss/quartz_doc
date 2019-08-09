@@ -24,34 +24,34 @@ class TheMarkdown {
           list.add(MarkdownComponent(type: MarkdownComponentType.BIG_TITLE, arguments: [matchesBigTitle.group(1)],));
           continue;
         }
-        final matchesQuote = RegExp("> (.*)").firstMatch(comp);
-        if (matchesBigTitle!=null) {
-          list.add(MarkdownComponent(type: MarkdownComponentType.QUOTE, arguments: [matchesQuote.group(1)],));
+        final matchesQuote = RegExp("> (.*)").firstMatch(comp.replaceAll("\n", "<br>"));
+        if (matchesQuote!=null) {
+          list.add(MarkdownComponent(type: MarkdownComponentType.QUOTE, arguments: [matchesQuote.group(1).replaceAll("<br>", "\n")],));
           continue;
         }
         final matchesListItem = RegExp("> (.*)").firstMatch(comp);
-        if (matchesBigTitle!=null) {
+        if (matchesListItem!=null) {
           list.add(MarkdownComponent(type: MarkdownComponentType.LIST_ITEM, arguments: [matchesListItem.group(1)],));
           continue;
         }
         final matchesItalicText = RegExp("_(.*)_").firstMatch(comp);
-        if (matchesBigTitle!=null) {
+        if (matchesItalicText!=null) {
           list.add(MarkdownComponent(type: MarkdownComponentType.ITALIC_TEXT, arguments: [matchesItalicText.group(1)],));
           continue;
         }
         final matchesBoldText = RegExp("_(.*)_").firstMatch(comp);
-        if (matchesBigTitle!=null) {
+        if (matchesBoldText!=null) {
           list.add(MarkdownComponent(type: MarkdownComponentType.BOLD_TEXT, arguments: [matchesBoldText.group(1)],));
           continue;
         }
         final matchesLink = RegExp("\\[(.*)\\]\\((.*)\\)").firstMatch(comp);
-        if (matchesBigTitle!=null) {
-          list.add(MarkdownComponent(type: MarkdownComponentType.ITALIC_TEXT, arguments: [matchesLink.group(1), matchesLink.group(2)],));
+        if (matchesLink!=null) {
+          list.add(MarkdownComponent(type: MarkdownComponentType.LINK, arguments: [matchesLink.group(1), matchesLink.group(2)],));
           continue;
         }
         final matchesCodeBlock = RegExp("\\`(.*)\\`").firstMatch(comp);
-        if (matchesBigTitle!=null) {
-          list.add(MarkdownComponent(type: MarkdownComponentType.CODE_BLOCK, arguments: [matchesLink.group(1)],));
+        if (matchesCodeBlock!=null) {
+          list.add(MarkdownComponent(type: MarkdownComponentType.CODE_BLOCK, arguments: [matchesCodeBlock.group(1)],));
           continue;
         }
         list.add(MarkdownComponent(type: MarkdownComponentType.TEXT, arguments: [comp],));
