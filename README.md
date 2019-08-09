@@ -8,6 +8,8 @@
 
 该项目尚未开发完毕，仅支持Markdown文档的编辑且不稳定。
 
+本项目用于Markdown编辑页面中的"复选框"功能具有一些Bug且无法正常工作，如果你看到了除我描述以外的更加严重的异常请立刻issue并给出解决方案，或者直接pull request减轻我的负担
+
 本项目目前用于pdf编辑的任何页面及类/文件都无法正常工作且极度不稳定，因为他们根本没有开始开发。
 
 The code here is not stable!
@@ -70,6 +72,7 @@ import 'package:quartz_doc/quartz_doc.dart';
 ```text
 感谢 Warpin Studio 的其它人员对我的大力支持与鼓励
 感谢 Flutter 茶馆 中的小伙伴们对我的大力支持与鼓励
+感谢 知乎 中的小伙伴们对我的大力支持与鼓励
 ```
 
 ## 关于捐赠
