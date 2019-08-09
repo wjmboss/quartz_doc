@@ -54,8 +54,10 @@ import 'package:quartz_doc/quartz_doc.dart';
 
 ![image](images/ResetPower.png)
 
-感谢 Warpin Studio的其它人员对我的大力支持与鼓励
-感谢 Flutter 茶馆中的小伙伴们对我的大力支持与鼓励
+```text
+感谢 Warpin Studio 的其它人员对我的大力支持与鼓励
+感谢 Flutter 茶馆 中的小伙伴们对我的大力支持与鼓励
+```
 
 ## 关于捐赠
 
@@ -64,3 +66,5 @@ import 'package:quartz_doc/quartz_doc.dart';
 ## 结尾
 
 本篇README如有任何错误，请立刻指出，谢谢！
+
+Make sure that you need these code 😇
