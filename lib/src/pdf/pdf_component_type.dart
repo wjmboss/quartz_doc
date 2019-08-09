@@ -1,0 +1,3 @@
+enum PdfComponentType {
+  PAGE, TEXT
+}

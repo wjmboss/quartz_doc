@@ -19,7 +19,6 @@ class TextSelectSheet extends StatefulWidget {
 class _TextSelectSheetState extends State<TextSelectSheet> {
   var isItalicChecked = false;
   var isBoldChecked = false;
-  var isDeleteLineChecked = false;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -40,12 +39,7 @@ class _TextSelectSheetState extends State<TextSelectSheet> {
               value: isItalicChecked,
               activeColor: Colors.blue,
               onChanged: (bool boolean) {
-                setState(() {
-                  if (boolean) {
-                    isBoldChecked = false;
-                  }
-                  isItalicChecked = boolean;
-                });
+                setState(() => isItalicChecked = boolean,);
               },
             ),
             Text("粗体"),
@@ -53,12 +47,7 @@ class _TextSelectSheetState extends State<TextSelectSheet> {
               value: isBoldChecked,
               activeColor: Colors.blue,
               onChanged: (bool boolean) {
-                setState(() {
-                  if (boolean) {
-                    isItalicChecked = false;
-                  }
-                  isBoldChecked = boolean;
-                });
+                setState(() => isBoldChecked = boolean,);
               },
             ),
           ],
@@ -80,10 +69,12 @@ class _TextSelectSheetState extends State<TextSelectSheet> {
               child: Text("好"),
               onPressed: () {
                 widget.parent.setState(() {
-                  if (isItalicChecked) {
+                  if (isItalicChecked&&!isBoldChecked) {
                     widget.parent.append(MarkdownComponent(type: MarkdownComponentType.ITALIC_TEXT, arguments: [widget.ctrlr.text],));
-                  } else if (isBoldChecked) {
+                  } else if (isBoldChecked&&!isItalicChecked) {
                     widget.parent.append(MarkdownComponent(type: MarkdownComponentType.BOLD_TEXT, arguments: [widget.ctrlr.text],));
+                  } else if (isBoldChecked&&isItalicChecked) {
+                    widget.parent.append(MarkdownComponent(type: MarkdownComponentType.BOLD_ITALIC_TEXT, arguments: [widget.ctrlr.text],));
                   } else {
                     widget.parent.append(MarkdownComponent(type: MarkdownComponentType.TEXT, arguments: [widget.ctrlr.text],));
                   }

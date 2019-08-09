@@ -2,9 +2,22 @@
 
 一个开源的Flutter文档处理库
 
+(知乎来的小伙伴们施舍个Star吧)
+
 ## 注意
 
 该项目尚未开发完毕，仅支持Markdown文档的编辑且不稳定。
+
+本项目目前用于pdf编辑的任何页面及类/文件都无法正常工作且极度不稳定，因为他们根本没有开始开发。
+
+The code here is not stable!
+## 示例截图
+![主界面](images/QuartzPage.png)
+![Markdown效果界面](images/MarkdownEditPage$Xiaoguo.png)
+![Markdown编辑界面](images/MarkdownEditPage$Bianji.png)
+![正在编辑一个链接的Markdown编辑界面](images/MarkdownEditPage$Bianji$Lianjie.png)
+![根本没有开始开发的极度不稳定的pdf编辑界面](images/PdfEditPage.png)
+
 ## 上手指南
 
 * 注: 如果您想要省去一些多余的麻烦，您可以直接在Android/iOS虚拟机里运行本项目中的example模块

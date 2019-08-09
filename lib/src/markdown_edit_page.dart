@@ -125,13 +125,47 @@ class MarkdownEditPageState extends State<MarkdownEditPage> {
                     ),
                     GestureDetector(
                       child: Icon(Icons.code, color: Colors.white,),
+                      onTap: () async {
+                        final result = await showMenu(
+                          context: context,
+                          position: RelativeRect.fromLTRB(0.0, 130.0, 0.0, 0.0),
+                          items: <PopupMenuEntry<int>>[
+                            PopupMenuItem(value: 0, child: Text("单行代码块"),),
+                            PopupMenuItem(value: 1, child: Text("多行代码块"),),
+                          ],
+                        );
+                        if (result==0) {
+                          textSheet(context, "请输入代码", "Code", Icons.code, (data) {
+                            setState(() {
+                              append(MarkdownComponent(type: MarkdownComponentType.CODE_BLOCK, arguments: [data],));
+                              save();
+                            });
+                          });
+                        } else if (result==1) {
+                          textSheet(context, "请输入代码", "Code", Icons.code, (data) {
+                            setState(() {
+                              append(MarkdownComponent(type: MarkdownComponentType.MULTI_LINE_CODE_BLOCK, arguments: [data],));
+                              save();
+                            });
+                          }, "", true);
+                        }
+                      },
+                    ),
+                    GestureDetector(
+                      child: Icon(Icons.playlist_add_check, color: Colors.white,),
                       onTap: () {
-                        textSheet(context, "请输入代码块内容", "代码块内容", Icons.code, (data) {
+                        textSheet(context, "请输入复选框内容", "复选框内容", Icons.list, (data) {
                           setState(() {
-                            append(MarkdownComponent(type: MarkdownComponentType.CODE_BLOCK, arguments: [data],));
+                            append(MarkdownComponent(type: MarkdownComponentType.CHECK_BOX, arguments: [data],));
                             save();
                           });
                         });
+                      },
+                    ),
+                    GestureDetector(
+                      child: Icon(Icons.functions, color: Colors.white,),
+                      onTap: () {
+                        //TODO 编辑公式
                       },
                     ),
                   ],

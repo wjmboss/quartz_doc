@@ -8,6 +8,7 @@ class TheMarkdown {
       if (comp!=""&&comp!=null) {
         if (comp=="---") {
           list.add(MarkdownComponent(type: MarkdownComponentType.SPLIT_LINE,));
+          continue;
         }
         final matchesSmallTitle = RegExp("### (.*)").firstMatch(comp);
         if (matchesSmallTitle!=null) {
@@ -29,9 +30,24 @@ class TheMarkdown {
           list.add(MarkdownComponent(type: MarkdownComponentType.QUOTE, arguments: [matchesQuote.group(1).replaceAll("<br>", "\n")],));
           continue;
         }
-        final matchesListItem = RegExp("> (.*)").firstMatch(comp);
+        final matchesCheckBox = RegExp("- \\[ \\] (.*)").firstMatch(comp);
+        if (matchesCheckBox!=null) {
+          list.add(MarkdownComponent(type: MarkdownComponentType.CHECK_BOX, arguments: [matchesCheckBox.group(1)],));
+          continue;
+        }
+        final matchesListItem = RegExp("- (.*)").firstMatch(comp);
         if (matchesListItem!=null) {
           list.add(MarkdownComponent(type: MarkdownComponentType.LIST_ITEM, arguments: [matchesListItem.group(1)],));
+          continue;
+        }
+        final matchesBoldItalicText = RegExp("___(.*)___").firstMatch(comp);
+        if (matchesBoldItalicText!=null) {
+          list.add(MarkdownComponent(type: MarkdownComponentType.BOLD_ITALIC_TEXT, arguments: [matchesBoldItalicText.group(1)],));
+          continue;
+        }
+        final matchesBoldText = RegExp("__(.*)__").firstMatch(comp);
+        if (matchesBoldText!=null) {
+          list.add(MarkdownComponent(type: MarkdownComponentType.BOLD_TEXT, arguments: [matchesBoldText.group(1)],));
           continue;
         }
         final matchesItalicText = RegExp("_(.*)_").firstMatch(comp);
@@ -39,14 +55,14 @@ class TheMarkdown {
           list.add(MarkdownComponent(type: MarkdownComponentType.ITALIC_TEXT, arguments: [matchesItalicText.group(1)],));
           continue;
         }
-        final matchesBoldText = RegExp("_(.*)_").firstMatch(comp);
-        if (matchesBoldText!=null) {
-          list.add(MarkdownComponent(type: MarkdownComponentType.BOLD_TEXT, arguments: [matchesBoldText.group(1)],));
-          continue;
-        }
         final matchesLink = RegExp("\\[(.*)\\]\\((.*)\\)").firstMatch(comp);
         if (matchesLink!=null) {
           list.add(MarkdownComponent(type: MarkdownComponentType.LINK, arguments: [matchesLink.group(1), matchesLink.group(2)],));
+          continue;
+        }
+        final matchesMultiLineCodeBlock = RegExp("\\`\\`\\`<br>(.*)<br>\\`\\`\\`").firstMatch(comp.replaceAll("\n", "<br>"));
+        if (matchesMultiLineCodeBlock!=null) {
+          list.add(MarkdownComponent(type: MarkdownComponentType.MULTI_LINE_CODE_BLOCK, arguments: [matchesMultiLineCodeBlock.group(1).replaceAll("<br>", "\n")],));
           continue;
         }
         final matchesCodeBlock = RegExp("\\`(.*)\\`").firstMatch(comp);
@@ -78,6 +94,9 @@ class TheMarkdown {
         case MarkdownComponentType.LIST_ITEM:
           buff.write("- ${comp.arguments[0]}\n\n");
           break;
+        case MarkdownComponentType.CHECK_BOX:
+          buff.write("- [ ] ${comp.arguments[0]}\n\n");
+          break;
         case MarkdownComponentType.TEXT:
           buff.write("${comp.arguments[0]}\n\n");
           break;
@@ -86,6 +105,9 @@ class TheMarkdown {
           break;
         case MarkdownComponentType.BOLD_TEXT:
           buff.write("__${comp.arguments[0]}__\n\n");
+          break;
+        case MarkdownComponentType.BOLD_ITALIC_TEXT:
+          buff.write("___${comp.arguments[0]}___\n\n");
           break;
         case MarkdownComponentType.LINK:
           buff.write("[${comp.arguments[0]}](${comp.arguments[1]})\n\n");
@@ -96,6 +118,8 @@ class TheMarkdown {
         case MarkdownComponentType.CODE_BLOCK:
           buff.write("`${comp.arguments[0]}`\n\n");
           break;
+        case MarkdownComponentType.MULTI_LINE_CODE_BLOCK:
+          buff.write("```\n${comp.arguments[0]}\n```\n\n");
       }
     }
     return buff.toString();

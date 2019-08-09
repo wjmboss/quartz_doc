@@ -24,7 +24,7 @@ class _EditFragmentState extends State<EditFragment> {
           elevation: 15.0,
           shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14.0))),
           child: ListTile(
-            title: Text(stringList2string(" => ", widget.parent.components[index].arguments)),
+            title: Text(widget.parent.components[index].type==MarkdownComponentType.SPLIT_LINE?"---分割线---":stringList2string(" => ", widget.parent.components[index].arguments)),
             subtitle: Text("Markdown组件 #${index+1} ${ofString(widget.parent.components[index].type)}"),
             trailing: Row(
               mainAxisSize: MainAxisSize.min,
